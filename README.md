@@ -179,7 +179,8 @@ Follow the steps below to set up and run the project locally.
    Create a User
    curl -X POST http://localhost:8080/usuarios -H "Content-Type: application/json" -d '{"nome":"John","email":"john@example.com"}'
 
-Creates a new user and returns the details.
+   Creates a new user and returns the details.
+
 📂 Project Structure
 
    my-project/
