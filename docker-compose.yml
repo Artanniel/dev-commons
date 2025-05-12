@@ -6,6 +6,7 @@ services:
     #image: -gvenzl/oracle-free:slim
     #image: -gvenzl/oracle-free:latest
     #image: -gvenzl/oracle-free:full
+    container_name: dev-commons-oracle-1
     ports:
       - "1521:1521"
     environment:
@@ -24,11 +25,20 @@ services:
     ports:
       - "58080:58080"
     depends_on:
-      - oracle
+      oracle:
+        condition: service_healthy
     environment:
-      SPRING_DATASOURCE_URL: jdbc:oracle:thin:@oracle:1521:FREEPDB1
-      SPRING_DATASOURCE_USERNAME: system
-      SPRING_DATASOURCE_PASSWORD: 031210
+      SPRING_DATASOURCE_SCHEMA1_URL: jdbc:oracle:thin:@oracle:1521/FREEPDB1
+      SPRING_DATASOURCE_SCHEMA1_USERNAME: schema1_user
+      SPRING_DATASOURCE_SCHEMA1_PASSWORD: schema1_password
+      SPRING_DATASOURCE_SCHEMA1_DRIVER_CLASS_NAME: oracle.jdbc.OracleDriver
+      SPRING_DATASOURCE_SCHEMA2_URL: jdbc:oracle:thin:@oracle:1521/FREEPDB1
+      SPRING_DATASOURCE_SCHEMA2_USERNAME: schema2_user
+      SPRING_DATASOURCE_SCHEMA2_PASSWORD: schema2_password
+      SPRING_DATASOURCE_SCHEMA2_DRIVER_CLASS_NAME: oracle.jdbc.OracleDriver
+      #SPRING_DATASOURCE_URL: jdbc:oracle:thin:@oracle:1521:FREEPDB1
+      #SPRING_DATASOURCE_USERNAME: system
+      #SPRING_DATASOURCE_PASSWORD: 031210
 
 volumes:
   oracle_data:

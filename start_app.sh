@@ -43,8 +43,8 @@ while "$IS_NECESSARY_CHANGE_PASS"; do
 
 done
 
-sleep 10
+sleep 5
 # Inicia a aplicação Spring Boot
-#echo "Iniciando Dev Commons..."
-#java -jar /app.jar
-#echo "Dev Commons iniciado com sucesso!"
+echo "Iniciando Dev Commons..."
+java -jar /app.jar
+echo "Dev Commons iniciado com sucesso!"

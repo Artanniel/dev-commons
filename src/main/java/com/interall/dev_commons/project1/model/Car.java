@@ -1,5 +1,6 @@
 package com.interall.dev_commons.project1.model;
 
+import com.interall.dev_commons.project2.model.Marketplace;
 import jakarta.persistence.*;
 
 @Entity
@@ -13,6 +14,10 @@ public class Car {
     private String model;
     private Integer year;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private User user;
+
     // Getters e Setters
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
@@ -20,4 +25,12 @@ public class Car {
     public void setModelo(String model) { this.model = model; }
     public Integer getAno() { return year; }
     public void setAno(Integer year) { this.year = year; }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public User getUser() {
+        return this.user;
+    }
 }

@@ -1,0 +1,15 @@
+-- Creation of the USER table in the SCHEMA_1 schema
+CREATE TABLE SCHEMA_1.USER (
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL
+);
+
+-- Creation of the CAR table in the SCHEMA_1 schema
+CREATE TABLE SCHEMA_1.CAR (
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    model VARCHAR(100) NOT NULL,
+    year INTEGER NOT NULL,
+    user_id BIGINT,
+    CONSTRAINT fk_user FOREIGN KEY (user_id) REFERENCES SCHEMA_1.USER(id)
+);

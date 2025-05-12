@@ -1,0 +1,5 @@
+-- Creating a view that combines USER and CAR data in SCHEMA_1
+CREATE VIEW SCHEMA_1.USER_CAR_VIEW AS
+SELECT u.id AS user_id, u.name AS user_name, u.email, c.id AS car_id, c.model, c.year
+FROM SCHEMA_1.USER u
+LEFT JOIN SCHEMA_1.CAR c ON c.user_id = u.id;

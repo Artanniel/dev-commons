@@ -1,1 +1,3 @@
-/home/artanniel/git/java/dev-commons/src/test/java/com/interall/dev_commons/DevCommonsApplicationTests.java
+/home/artanniel/git/java/dev-commons_v1/src/test/java/com/interall/dev_commons/DevCommonsApplicationTests.java
+/home/artanniel/git/java/dev-commons_v1/src/test/java/com/interall/dev_commons/repository/schema1/UserCarRepositoryTest.java
+/home/artanniel/git/java/dev-commons_v1/src/test/java/com/interall/dev_commons/repository/schema2/MarketplaceProductsRepositoryTest.java

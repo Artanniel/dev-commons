@@ -32,7 +32,7 @@ public class DataSourceConfig {
             @Qualifier("schema1DataSource") DataSource dataSource) {
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(dataSource);
-        em.setPackagesToScan("com.example.devcommons.model.schema1");
+        em.setPackagesToScan("com.interall.dev_commons.project1.model");
         em.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
         em.setPersistenceUnitName("schema1");
 
@@ -49,7 +49,7 @@ public class DataSourceConfig {
             @Qualifier("schema2DataSource") DataSource dataSource) {
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(dataSource);
-        em.setPackagesToScan("com.example.devcommons.model.schema2");
+        em.setPackagesToScan("com.interall.dev_commons.project2.model");
         em.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
         em.setPersistenceUnitName("schema2");
 

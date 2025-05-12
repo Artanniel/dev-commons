@@ -8,19 +8,19 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/carros")
+@RequestMapping("/cars")
 public class CarController {
 
     @Autowired
     private CarService carService;
 
     @GetMapping
-    public List<Car> listarCarros() {
-        return carService.listarCarros();
+    public List<Car> listCars() {
+        return carService.listCars();
     }
 
     @PostMapping
-    public Car criarCarro(@RequestBody Car car) {
-        return carService.salvarCarro(car);
+    public Car createCar(@RequestBody Car car) {
+        return carService.saveCar(car);
     }
 }

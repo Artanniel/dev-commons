@@ -69,23 +69,29 @@ Siga os passos abaixo para configurar e rodar o projeto localmente.
    
    Cria um novo usuário e retorna os detalhes.
 
-📂 Estrutura do Projeto
+6. Execução de teste com JUnit
+      
+      Para executar os testes, use o seguinte comando:
+      mvn clean install
+      mvn test
    
-   meu-projeto/
-   ├── src/
-   │   ├── main/
-   │   │   ├── java/com/example/meuprojeto/
-   │   │   │   ├── controller/      # Contém os controllers REST
-   │   │   │   ├── model/          # Entidades JPA
-   │   │   │   ├── repository/     # Interfaces de acesso ao banco
-   │   │   │   ├── service/        # Lógica de negócio
-   │   │   ├── resources/
-   │   │   │   └── application.properties  # Configurações da aplicação
-   ├── Dockerfile                  # Configuração do container da aplicação
-   ├── docker-compose.yml          # Orquestração dos serviços
-   ├── pom.xml                     # Dependências do Maven
-   ├── start_app.sh                # Script de inicialização
-   └── README.md                   # Este arquivo
+   📂 Estrutura do Projeto
+   
+      meu-projeto/
+      ├── src/
+      │   ├── main/
+      │   │   ├── java/com/example/meuprojeto/
+      │   │   │   ├── controller/      # Contém os controllers REST
+      │   │   │   ├── model/          # Entidades JPA
+      │   │   │   ├── repository/     # Interfaces de acesso ao banco
+      │   │   │   ├── service/        # Lógica de negócio
+      │   │   ├── resources/
+      │   │   │   └── application.properties  # Configurações da aplicação
+      ├── Dockerfile                  # Configuração do container da aplicação
+      ├── docker-compose.yml          # Orquestração dos serviços
+      ├── pom.xml                     # Dependências do Maven
+      ├── start_app.sh                # Script de inicialização
+      └── README.md                   # Este arquivo
 
 🔧 Resolução de Problemas
 
@@ -95,6 +101,13 @@ Siga os passos abaixo para configurar e rodar o projeto localmente.
    mvn install:install-file -Dfile=ojdbc8.jar -DgroupId=com.oracle.database.jdbc -DartifactId=ojdbc8 -Dversion=19.7.0.0 -Dpackaging=jar
    
    Container não inicia: Certifique-se de que as portas 1521 e 8080 não estão em uso.
+
+   Teste cada script Flyway em um banco limpo antes de aplicá-lo em produção:
+   docker-compose down
+   docker volume rm dev-commons_oracle_data
+   docker-compose up --build
+   
+   docker logs <nome_do_container_app>
 
 🌟 Próximos Passos
 
@@ -181,6 +194,12 @@ Follow the steps below to set up and run the project locally.
 
    Creates a new user and returns the details.
 
+6. Running tests with JUnit
+
+   To run the tests, use the following command:
+   mvn clean install
+   mvn test
+
 📂 Project Structure
 
    my-project/
@@ -201,14 +220,18 @@ Follow the steps below to set up and run the project locally.
 
 🔧 Troubleshooting
 
-Database connection error: Check if Oracle Free is running (docker ps) and if the password in application.properties matches the one in docker-compose.yml.
-
-Oracle JDBC dependency not found: The Oracle driver may not be in Maven Central. Download it from the Oracle website and install it locally with:
-mvn install:install-file -Dfile=ojdbc8.jar -DgroupId=com.oracle.database.jdbc -DartifactId=ojdbc8 -Dversion=19.7.0.0 -Dpackaging=jar
-
-
-Container fails to start: Ensure ports 1521 and 8080 are not in use.
-
+   Database connection error: Check if Oracle Free is running (docker ps) and if the password in application.properties matches the one in docker-compose.yml.
+   
+   Oracle JDBC dependency not found: The Oracle driver may not be in Maven Central. Download it from the Oracle website and install it locally with:
+   mvn install:install-file -Dfile=ojdbc8.jar -DgroupId=com.oracle.database.jdbc -DartifactId=ojdbc8 -Dversion=19.7.0.0 -Dpackaging=jar
+   
+   
+   Container fails to start: Ensure ports 1521 and 8080 are not in use.
+   
+   Test each Flyway script on a clean bench before applying it to production:
+   docker-compose down
+   docker volume rm dev-commons_oracle_data
+   docker-compose up --build
 
 🌟 Next Steps
 

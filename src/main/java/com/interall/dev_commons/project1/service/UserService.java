@@ -13,11 +13,11 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    public List<User> listarUsuarios() {
+    public List<User> listUsers() {
         return userRepository.findAll();
     }
 
-    public User salvarUsuario(User user) {
+    public User saveUser(User user) {
         return userRepository.save(user);
     }
 }
