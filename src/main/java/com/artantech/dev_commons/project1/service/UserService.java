@@ -1,6 +1,6 @@
 package com.artantech.dev_commons.project1.service;
 
-import com.artantech.dev_commons.project1.model.User;
+import com.artantech.dev_commons.project1.entity.User;
 import com.artantech.dev_commons.project1.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

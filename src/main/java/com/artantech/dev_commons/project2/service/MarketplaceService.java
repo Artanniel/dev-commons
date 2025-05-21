@@ -1,6 +1,6 @@
 package com.artantech.dev_commons.project2.service;
 
-import com.artantech.dev_commons.project2.model.Marketplace;
+import com.artantech.dev_commons.project2.entity.Marketplace;
 import com.artantech.dev_commons.project2.repository.MarketplaceRepository;
 import org.springframework.stereotype.Service;
 

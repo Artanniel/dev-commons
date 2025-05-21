@@ -1,6 +1,6 @@
 package com.artantech.dev_commons.project1.controller;
 
-import com.artantech.dev_commons.project1.model.Car;
+import com.artantech.dev_commons.project1.entity.Car;
 import com.artantech.dev_commons.project1.service.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

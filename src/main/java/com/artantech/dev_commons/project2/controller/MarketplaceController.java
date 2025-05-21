@@ -1,6 +1,6 @@
 package com.artantech.dev_commons.project2.controller;
 
-import com.artantech.dev_commons.project2.model.Marketplace;
+import com.artantech.dev_commons.project2.entity.Marketplace;
 import com.artantech.dev_commons.project2.service.MarketplaceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

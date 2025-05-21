@@ -1,6 +1,6 @@
 package com.artantech.dev_commons.project1.controller;
 
-import com.artantech.dev_commons.project1.model.User;
+import com.artantech.dev_commons.project1.entity.User;
 import com.artantech.dev_commons.project1.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

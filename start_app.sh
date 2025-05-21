@@ -4,9 +4,17 @@ NEW_PASSWORD="031210"
 CONTAINER_NAME="dev-commons-oracle-1"
 IS_NECESSARY_CHANGE_PASS=true
 
+echo "#############################################################"
+echo "Execute build project with mvn..."
+mvn clean package
+echo "Finished build project with mvn..."
+echo "#############################################################"
+
 echo "Execute docker-compose up..."
 docker-compose up --build -d
 echo "Finished docker-compose up..."
+
+echo "#############################################################"
 
 echo "Waiting for container $CONTAINER_NAME to start..."
 #echo $CONTAINER_NAME
@@ -42,9 +50,11 @@ while "$IS_NECESSARY_CHANGE_PASS"; do
 
 
 done
+echo "#############################################################"
 
 sleep 5
-# Inicia a aplicação Spring Boot
-echo "Iniciando Dev Commons..."
+echo "#############################################################"
+echo "Run Dev Commons..."
 java -jar /app.jar
-echo "Dev Commons iniciado com sucesso!"
+echo "Dev Commons running with successfully!"
+echo "#############################################################"

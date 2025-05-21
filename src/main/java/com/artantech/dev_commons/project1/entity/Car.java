@@ -1,4 +1,4 @@
-package com.artantech.dev_commons.project1.model;
+package com.artantech.dev_commons.project1.entity;
 
 import jakarta.persistence.*;
 

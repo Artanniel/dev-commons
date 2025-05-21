@@ -1,7 +1,7 @@
 package com.artantech.dev_commons.repository.schema1;
 
-import com.artantech.dev_commons.project1.model.Car;
-import com.artantech.dev_commons.project1.model.User;
+import com.artantech.dev_commons.project1.entity.Car;
+import com.artantech.dev_commons.project1.entity.User;
 import com.artantech.dev_commons.project1.repository.CarRepository;
 import com.artantech.dev_commons.project1.repository.UserRepository;
 import org.junit.jupiter.api.Test;

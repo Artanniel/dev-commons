@@ -12,6 +12,7 @@ public class FlywayConfig {
 
     @Bean(name = "flywaySchema1")
     public Flyway flywaySchema1(@Qualifier("schema1DataSource") DataSource dataSource) {
+        System.out.println("FlywayConfig#flywaySchema1" + dataSource);
         Flyway flyway = Flyway.configure()
                 .dataSource(dataSource)
                 .locations("classpath:db/migration/schema1")

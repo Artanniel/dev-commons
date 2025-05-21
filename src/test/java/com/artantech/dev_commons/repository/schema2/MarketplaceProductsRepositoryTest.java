@@ -1,7 +1,7 @@
 package com.artantech.dev_commons.repository.schema2;
 
-import com.artantech.dev_commons.project2.model.Marketplace;
-import com.artantech.dev_commons.project2.model.Product;
+import com.artantech.dev_commons.project2.entity.Marketplace;
+import com.artantech.dev_commons.project2.entity.Product;
 import com.artantech.dev_commons.project2.repository.MarketplaceRepository;
 import com.artantech.dev_commons.project2.repository.ProductsRepository;
 import org.junit.jupiter.api.Test;
