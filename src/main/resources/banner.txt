@@ -1,0 +1,18 @@
+${AnsiColor.GREEN}
+==========================================================================
+    _____                _____
+   |  __ \              / ____|
+   | |  | | _____   __ | |     ___  _ __ ___  _ __ ___   ___  _ __  ___
+   | |  | |/ _ \ \ / / | |    / _ \| '_ ` _ \| '_ ` _ \ / _ \| '_ \/ __|
+   | |__| |  __/\ V /  | |___| (_) | | | | | | | | | | | (_) | | | \__ \
+   |_____/ \___| \_/    \_____\___/|_| |_| |_|_| |_| |_|\___/|_| |_|___/
+
+${AnsiColor.CYAN}
+Application: ${application.title:Dev Commons}
+Version: ${application.version:1.0.0}
+Developed by: Artan Tech
+Spring Boot: ${spring-boot.version}
+Profile: ${spring.profiles.active:default}
+${AnsiColor.GREEN}
+==========================================================================
+${AnsiColor.DEFAULT}

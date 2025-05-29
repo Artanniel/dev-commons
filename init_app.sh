@@ -78,11 +78,11 @@ if [ -n "$APP_CONTAINER_EXISTS" ]; then
 
         # Construir a imagem do app
         echo "Construindo a imagem do app 'dev-commons-app'..."
-        docker build -t "${APP_SERVICE_NAME}" .
+        docker build -t "$APP_CONTAINER_NAME" .
 
         # Executar o contêiner do app com as variáveis de ambiente e link para o Oracle
         echo "Iniciando o contêiner do app 'dev-commons-app'..."
-        docker run -d --name "${APP_SERVICE_NAME}" -p 58080:58080 --link dev-commons-oracle-1:oracle "${APP_SERVICE_NAME}"
+        docker run -d --name "$APP_CONTAINER_NAME" -p 58080:58080 --link dev-commons-oracle-1:oracle "$APP_CONTAINER_NAME"
         #docker run -d --name dev-commons-app -p 58080:58080
 
         if [ $? -ne 0 ]; then
