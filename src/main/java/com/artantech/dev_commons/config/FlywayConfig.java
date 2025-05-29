@@ -15,7 +15,7 @@ public class FlywayConfig {
         System.out.println("FlywayConfig#flywaySchema1" + dataSource);
         Flyway flyway = Flyway.configure()
                 .dataSource(dataSource)
-                .locations("classpath:db/migration/schema1")
+                .locations("classpath:db/migration_test/schema1")
                 .schemas("SCHEMA_1")
                 .defaultSchema("SCHEMA_1")
                 .createSchemas(true)
@@ -31,7 +31,7 @@ public class FlywayConfig {
     public Flyway flywaySchema2(@Qualifier("schema2DataSource") DataSource dataSource) {
         Flyway flyway = Flyway.configure()
                 .dataSource(dataSource)
-                .locations("classpath:db/migration/schema2")
+                .locations("classpath:db/migration_test/schema2")
                 .schemas("SCHEMA_2")
                 .defaultSchema("SCHEMA_2")
                 .createSchemas(true)

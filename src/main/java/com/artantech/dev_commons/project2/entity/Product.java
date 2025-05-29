@@ -3,7 +3,7 @@ package com.artantech.dev_commons.project2.entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "PRODUCTS", schema = "SCHEMA_2", catalog = "project2")
+@Table(name = "PRODUCTS", schema = "SCHEMA_2")
 public class Product {
 
     @Id
