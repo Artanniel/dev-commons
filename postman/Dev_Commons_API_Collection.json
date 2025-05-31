@@ -15,10 +15,10 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "http://localhost:8080/products",
+              "raw": "http://localhost:8082/products",
               "protocol": "http",
               "host": ["localhost"],
-              "port": "8080",
+              "port": "8082",
               "path": ["products"]
             },
             "description": "Returns a list of all products"
@@ -44,10 +44,10 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "http://localhost:8080/products/1",
+              "raw": "http://localhost:8082/products/1",
               "protocol": "http",
               "host": ["localhost"],
-              "port": "8080",
+              "port": "8082",
               "path": ["products", "1"]
             },
             "description": "Returns a product by its ID"
@@ -82,10 +82,10 @@
               "raw": "{\n    \"name\": \"New Product\",\n    \"price\": 99.99,\n    \"marketplace\": {\n        \"id\": 1\n    }\n}"
             },
             "url": {
-              "raw": "http://localhost:8080/products",
+              "raw": "http://localhost:8082/products",
               "protocol": "http",
               "host": ["localhost"],
-              "port": "8080",
+              "port": "8082",
               "path": ["products"]
             },
             "description": "Creates a new product"
@@ -120,10 +120,10 @@
               "raw": "{\n    \"name\": \"Updated Product Name\",\n    \"price\": 149.99,\n    \"marketplace\": {\n        \"id\": 1\n    }\n}"
             },
             "url": {
-              "raw": "http://localhost:8080/products/1",
+              "raw": "http://localhost:8082/products/1",
               "protocol": "http",
               "host": ["localhost"],
-              "port": "8080",
+              "port": "8082",
               "path": ["products", "1"]
             },
             "description": "Updates an existing product"
@@ -149,10 +149,10 @@
             "method": "DELETE",
             "header": [],
             "url": {
-              "raw": "http://localhost:8080/products/1",
+              "raw": "http://localhost:8082/products/1",
               "protocol": "http",
               "host": ["localhost"],
-              "port": "8080",
+              "port": "8082",
               "path": ["products", "1"]
             },
             "description": "Deletes a product by its ID"
@@ -184,10 +184,10 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "http://localhost:8080/marketplace",
+              "raw": "http://localhost:8082/marketplace",
               "protocol": "http",
               "host": ["localhost"],
-              "port": "8080",
+              "port": "8082",
               "path": ["marketplace"]
             },
             "description": "Returns a list of all marketplaces"
@@ -213,10 +213,10 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "http://localhost:8080/marketplace/1",
+              "raw": "http://localhost:8082/marketplace/1",
               "protocol": "http",
               "host": ["localhost"],
-              "port": "8080",
+              "port": "8082",
               "path": ["marketplace", "1"]
             },
             "description": "Returns a marketplace by its ID"
@@ -251,10 +251,10 @@
               "raw": "{\n    \"name\": \"New Marketplace\",\n    \"description\": \"A description for the new marketplace\"\n}"
             },
             "url": {
-              "raw": "http://localhost:8080/marketplace",
+              "raw": "http://localhost:8082/marketplace",
               "protocol": "http",
               "host": ["localhost"],
-              "port": "8080",
+              "port": "8082",
               "path": ["marketplace"]
             },
             "description": "Creates a new marketplace"
@@ -289,10 +289,10 @@
               "raw": "{\n    \"name\": \"Updated Marketplace Name\",\n    \"description\": \"Updated description for the marketplace\"\n}"
             },
             "url": {
-              "raw": "http://localhost:8080/marketplace/1",
+              "raw": "http://localhost:8082/marketplace/1",
               "protocol": "http",
               "host": ["localhost"],
-              "port": "8080",
+              "port": "8082",
               "path": ["marketplace", "1"]
             },
             "description": "Updates an existing marketplace"
@@ -318,10 +318,10 @@
             "method": "DELETE",
             "header": [],
             "url": {
-              "raw": "http://localhost:8080/marketplace/1",
+              "raw": "http://localhost:8082/marketplace/1",
               "protocol": "http",
               "host": ["localhost"],
-              "port": "8080",
+              "port": "8082",
               "path": ["marketplace", "1"]
             },
             "description": "Deletes a marketplace by its ID"
@@ -353,10 +353,10 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "http://localhost:8080/cars",
+              "raw": "http://localhost:8082/cars",
               "protocol": "http",
               "host": ["localhost"],
-              "port": "8080",
+              "port": "8082",
               "path": ["cars"]
             },
             "description": "Returns a list of all cars"
@@ -382,10 +382,10 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "http://localhost:8080/cars/1",
+              "raw": "http://localhost:8082/cars/1",
               "protocol": "http",
               "host": ["localhost"],
-              "port": "8080",
+              "port": "8082",
               "path": ["cars", "1"]
             },
             "description": "Returns a car by its ID"
@@ -420,10 +420,10 @@
               "raw": "{\n    \"brand\": \"Toyota\",\n    \"model\": \"Corolla\",\n    \"year\": 2023,\n    \"price\": 25000.00,\n    \"color\": \"Silver\"\n}"
             },
             "url": {
-              "raw": "http://localhost:8080/cars",
+              "raw": "http://localhost:8082/cars",
               "protocol": "http",
               "host": ["localhost"],
-              "port": "8080",
+              "port": "8082",
               "path": ["cars"]
             },
             "description": "Creates a new car"
@@ -458,10 +458,10 @@
               "raw": "{\n    \"brand\": \"Toyota\",\n    \"model\": \"Camry\",\n    \"year\": 2024,\n    \"price\": 28000.00,\n    \"color\": \"Black\"\n}"
             },
             "url": {
-              "raw": "http://localhost:8080/cars/1",
+              "raw": "http://localhost:8082/cars/1",
               "protocol": "http",
               "host": ["localhost"],
-              "port": "8080",
+              "port": "8082",
               "path": ["cars", "1"]
             },
             "description": "Updates an existing car"
@@ -487,10 +487,10 @@
             "method": "DELETE",
             "header": [],
             "url": {
-              "raw": "http://localhost:8080/cars/1",
+              "raw": "http://localhost:8082/cars/1",
               "protocol": "http",
               "host": ["localhost"],
-              "port": "8080",
+              "port": "8082",
               "path": ["cars", "1"]
             },
             "description": "Deletes a car by its ID"
@@ -522,10 +522,10 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "http://localhost:8080/users",
+              "raw": "http://localhost:8082/users",
               "protocol": "http",
               "host": ["localhost"],
-              "port": "8080",
+              "port": "8082",
               "path": ["users"]
             },
             "description": "Returns a list of all users"
@@ -551,10 +551,10 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "http://localhost:8080/users/1",
+              "raw": "http://localhost:8082/users/1",
               "protocol": "http",
               "host": ["localhost"],
-              "port": "8080",
+              "port": "8082",
               "path": ["users", "1"]
             },
             "description": "Returns a user by their ID"
@@ -589,10 +589,10 @@
               "raw": "{\n    \"name\": \"John Doe\",\n    \"email\": \"john.doe@example.com\",\n    \"username\": \"johndoe\",\n    \"password\": \"password123\",\n    \"active\": true\n}"
             },
             "url": {
-              "raw": "http://localhost:8080/users",
+              "raw": "http://localhost:8082/users",
               "protocol": "http",
               "host": ["localhost"],
-              "port": "8080",
+              "port": "8082",
               "path": ["users"]
             },
             "description": "Creates a new user"
@@ -627,10 +627,10 @@
               "raw": "{\n    \"name\": \"John Updated\",\n    \"email\": \"john.updated@example.com\",\n    \"username\": \"johnupdated\",\n    \"password\": \"newpassword123\",\n    \"active\": true\n}"
             },
             "url": {
-              "raw": "http://localhost:8080/users/1",
+              "raw": "http://localhost:8082/users/1",
               "protocol": "http",
               "host": ["localhost"],
-              "port": "8080",
+              "port": "8082",
               "path": ["users", "1"]
             },
             "description": "Updates an existing user"
@@ -656,10 +656,10 @@
             "method": "DELETE",
             "header": [],
             "url": {
-              "raw": "http://localhost:8080/users/1",
+              "raw": "http://localhost:8082/users/1",
               "protocol": "http",
               "host": ["localhost"],
-              "port": "8080",
+              "port": "8082",
               "path": ["users", "1"]
             },
             "description": "Deletes a user by their ID"
