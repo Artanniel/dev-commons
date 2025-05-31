@@ -16,21 +16,21 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @GetMapping
+    @GetMapping("")
     public List<User> listUsers() {
         return userService.listUsers();
     }
 
 
     @PostMapping
-    public ResponseEntity<User> createUser(@RequestBody User user) { // Renamed from createUsers for consistency
+    public ResponseEntity<User> createUser(@RequestBody User user) {
         User createdUser = userService.saveUser(user);
         return new ResponseEntity<>(createdUser, HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User user) {
-        User updatedUser = userService.updateUser(id, user); // Assuming userService.updateUser(id, user) exists
+        User updatedUser = userService.updateUser(id, user);
         if (updatedUser != null) {
             return new ResponseEntity<>(updatedUser, HttpStatus.OK);
         } else {
@@ -40,8 +40,6 @@ public class UserController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
-        // Assuming userService.deleteUser(id) exists and handles cases where the user might not be found
-        // or throws an exception that can be handled by a global exception handler.
         userService.deleteUser(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }

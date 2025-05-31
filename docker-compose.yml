@@ -25,13 +25,14 @@ services:
       dockerfile: Dockerfile
     container_name: dev-commons-app
     ports:
-      - "58080:58080"
+      - "8082:8082"
     environment:
-      SPRING_DATASOURCE_SCHEMA1_URL: jdbc:oracle:thin:@oracle:1521/FREEPDB1
+      DB_HOST: oracle
+      #SPRING_DATASOURCE_SCHEMA1_URL: jdbc:oracle:thin:@oracle:1521/FREEPDB1
       SPRING_DATASOURCE_SCHEMA1_USERNAME: system
       SPRING_DATASOURCE_SCHEMA1_PASSWORD: 031210
       SPRING_DATASOURCE_SCHEMA1_DRIVER_CLASS_NAME: oracle.jdbc.OracleDriver
-      SPRING_DATASOURCE_SCHEMA2_URL: jdbc:oracle:thin:@oracle:1521/FREEPDB1
+      #SPRING_DATASOURCE_SCHEMA2_URL: jdbc:oracle:thin:@oracle:1521/FREEPDB1
       SPRING_DATASOURCE_SCHEMA2_USERNAME: system
       SPRING_DATASOURCE_SCHEMA2_PASSWORD: 031210
       SPRING_DATASOURCE_SCHEMA2_DRIVER_CLASS_NAME: oracle.jdbc.OracleDriver

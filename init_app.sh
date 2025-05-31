@@ -2,8 +2,9 @@
 
 # --- Configurações ---
 ORACLE_IMAGE="gvenzl/oracle-free"
+export DB_HOST=oracle
 ORACLE_SERVICE_NAME="oracle"
-APP_SERVICE_NAME="app"
+#APP_SERVICE_NAME="app"
 ORACLE_CONTAINER_NAME="dev-commons-oracle-1"
 APP_CONTAINER_NAME="dev-commons-app"
 # ---------------------
@@ -82,8 +83,8 @@ if [ -n "$APP_CONTAINER_EXISTS" ]; then
 
         # Executar o contêiner do app com as variáveis de ambiente e link para o Oracle
         echo "Iniciando o contêiner do app 'dev-commons-app'..."
-        docker run -d --name "$APP_CONTAINER_NAME" -p 58080:58080 --link dev-commons-oracle-1:oracle "$APP_CONTAINER_NAME"
-        #docker run -d --name dev-commons-app -p 58080:58080
+        docker run -d --name "$APP_CONTAINER_NAME" -p 8082:8082 --link dev-commons-oracle-1:oracle -e DB_HOST=oracle "$APP_CONTAINER_NAME"
+        #docker run -d --name dev-commons-app -p 808:8082
 
         if [ $? -ne 0 ]; then
             echo "Erro: Falha ao criar/iniciar o serviço do App. Abortando 1."
@@ -121,9 +122,9 @@ else
 
         # Executar o contêiner do app com as variáveis de ambiente e link para o Oracle
         echo "Iniciando o contêiner do app 'dev-commons-app'..."
-        #docker run -d --name dev-commons-app -p 58080:58080 --link dev-commons-oracle-1:oracle dev-commons-app
-        docker run -d --name "$APP_CONTAINER_NAME" -p 58080:58080 --link dev-commons-oracle-1:oracle "$APP_CONTAINER_NAME"
-        #docker run -d --name dev-commons-app -p 58080:58080
+        #docker run -d --name dev-commons-app -p 8082:8082 --link dev-commons-oracle-1:oracle dev-commons-app
+        docker run -d --name "$APP_CONTAINER_NAME" -p 8082:8082 --link dev-commons-oracle-1:oracle -e DB_HOST=oracle "$APP_CONTAINER_NAME"
+        #docker run -d --name dev-commons-app -p 8082:8082
 
         if [ $? -ne 0 ]; then
             echo "Erro: Falha ao iniciar o contêiner do app. Abortando."
@@ -154,5 +155,5 @@ fi
 
 echo "#############################################################"
 echo "Deploy e inicialização concluídos. Verifique os logs com 'docker-compose logs -f'."
-echo "Acesse sua aplicação em http://localhost:58080."
+echo "Acesse sua aplicação em http://localhost:8082."
 echo "#############################################################"
