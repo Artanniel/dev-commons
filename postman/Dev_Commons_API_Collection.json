@@ -6,6 +6,450 @@
   },
   "item": [
     {
+      "name": "Wallet API",
+      "description": "Endpoints for Wallet CRUD operations",
+      "item": [
+        {
+          "name": "Get All Wallets",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8082/wallets",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8082",
+              "path": ["wallets"]
+            },
+            "description": "Returns a list of all wallets"
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Get Wallet By ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8082/wallets/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8082",
+              "path": ["wallets", "1"]
+            },
+            "description": "Returns a wallet by its ID"
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Create Wallet",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"New Wallet\",\n    \"balance\": 1000.00,\n    \"currency\": \"USD\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8082/wallets",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8082",
+              "path": ["wallets"]
+            },
+            "description": "Creates a new wallet"
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 201\", function () {",
+                  "    pm.response.to.have.status(201);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Update Wallet",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"Updated Wallet\",\n    \"balance\": 2000.00,\n    \"currency\": \"EUR\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8082/wallets/1?params[param1]=value1&query[filter]=all",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8082",
+              "path": ["wallets", "1"],
+              "query": [
+                {
+                  "key": "params[param1]",
+                  "value": "value1"
+                },
+                {
+                  "key": "query[filter]",
+                  "value": "all"
+                }
+              ]
+            },
+            "description": "Updates an existing wallet"
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Delete Wallet",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8082/wallets/1?params[confirm]=true&query[permanent]=false",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8082",
+              "path": ["wallets", "1"],
+              "query": [
+                {
+                  "key": "params[confirm]",
+                  "value": "true"
+                },
+                {
+                  "key": "query[permanent]",
+                  "value": "false"
+                }
+              ]
+            },
+            "description": "Deletes a wallet by its ID"
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 204\", function () {",
+                  "    pm.response.to.have.status(204);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Seller API",
+      "description": "Endpoints for Seller CRUD operations",
+      "item": [
+        {
+          "name": "Get All Sellers",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8082/seller",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8082",
+              "path": ["seller"]
+            },
+            "description": "Returns a list of all sellers"
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Get Seller By ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8082/seller/1?params[param1]=value1&query[filter]=all",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8082",
+              "path": ["seller", "1"],
+              "query": [
+                {
+                  "key": "params[param1]",
+                  "value": "value1"
+                },
+                {
+                  "key": "query[filter]",
+                  "value": "all"
+                }
+              ]
+            },
+            "description": "Returns a seller by its ID"
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Create Seller",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"New Seller\",\n    \"email\": \"seller@example.com\",\n    \"rating\": 4.5\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8082/seller",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8082",
+              "path": ["seller"]
+            },
+            "description": "Creates a new seller"
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 201\", function () {",
+                  "    pm.response.to.have.status(201);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Update Seller",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"Updated Seller\",\n    \"email\": \"updated.seller@example.com\",\n    \"rating\": 5.0\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8082/seller/1?params[param1]=value1&query[filter]=all",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8082",
+              "path": ["seller", "1"],
+              "query": [
+                {
+                  "key": "params[param1]",
+                  "value": "value1"
+                },
+                {
+                  "key": "query[filter]",
+                  "value": "all"
+                }
+              ]
+            },
+            "description": "Updates an existing seller"
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Delete Seller",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8082/seller/1?params[confirm]=true&query[permanent]=false",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8082",
+              "path": ["seller", "1"],
+              "query": [
+                {
+                  "key": "params[confirm]",
+                  "value": "true"
+                },
+                {
+                  "key": "query[permanent]",
+                  "value": "false"
+                }
+              ]
+            },
+            "description": "Deletes a seller by its ID"
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 204\", function () {",
+                  "    pm.response.to.have.status(204);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
       "name": "Products API",
       "description": "Endpoints for Products CRUD operations",
       "item": [
