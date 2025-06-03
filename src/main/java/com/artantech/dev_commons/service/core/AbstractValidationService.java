@@ -2,6 +2,7 @@ package com.artantech.dev_commons.service.core;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.springframework.beans.factory.annotation.Value;
 
 import java.io.File;
@@ -20,7 +21,7 @@ import java.util.Objects;
  */
 public abstract class AbstractValidationService<T, ID> {
 
-    private static final ObjectMapper objectMapper = new ObjectMapper();
+    private final ObjectMapper objectMapper = new ObjectMapper();
 
     @Value("${validation.file.directory}")
     private String fileDir;
@@ -40,12 +41,13 @@ public abstract class AbstractValidationService<T, ID> {
      * @param authHeader the authorization header to validate
      * @return true if valid, false otherwise
      */
-    public Boolean validateAuthHeader(String serviceName, String authHeader) {
+    public Boolean validateAuthHeader(String serviceName, String authHeader) throws Exception {
         String entityName = getEntityClassName();
         String filename = fileDir + serviceName + "_" + entityName + "_header.json";
 
         try {
             Path path = Paths.get(filename);
+            authHeader = getJsonAuthHeader(authHeader);
             createFileIfNotExist(authHeader, path);
             JsonNode savedHeaderNode = objectMapper.readTree(new String(Files.readAllBytes(path)));
             JsonNode authHeaderNode = objectMapper.readTree(authHeader);
@@ -64,6 +66,29 @@ public abstract class AbstractValidationService<T, ID> {
         } catch (IOException e) {
             throw new RuntimeException("Error validating auth header", e);
         }
+    }
+
+    private String getJsonAuthHeader(String authHeader) throws Exception {
+        String jsonString = "";
+        if(Objects.isNull(authHeader) || authHeader.contains("{{authToken}}")) {
+            return jsonString;
+        }
+        String[] parts = authHeader.split(" ", 2);
+        if (parts.length != 2) {
+            throw new IllegalArgumentException("String of authentication invalid.");
+        }
+        String authType = parts[0];
+        String token = parts[1];
+        ObjectMapper objectMapper = new ObjectMapper();
+        ObjectNode jsonNode = objectMapper.createObjectNode();
+        jsonNode.put("authType", authType);
+        jsonNode.put("token", token);
+        try {
+            jsonString = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(jsonNode);
+        } catch (Exception e) {
+            throw new Exception(e.getMessage(), e);
+        }
+        return jsonString;
     }
 
     /**
@@ -170,7 +195,8 @@ public abstract class AbstractValidationService<T, ID> {
         try {
             Path path = Paths.get(filename);
             createFileIfNotExist("", path);
-            return objectMapper.readTree(path.toFile());
+            JsonNode returnObject = objectMapper.readTree(path.toFile());
+            return Objects.isNull(returnObject) || returnObject.isEmpty() ? objectMapper.createObjectNode() : returnObject;
         } catch (IOException e) {
             throw new RuntimeException("Error getting response payload", e);
         }

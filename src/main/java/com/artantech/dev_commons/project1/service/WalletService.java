@@ -14,15 +14,15 @@ import java.util.Map;
 public class WalletService extends AbstractValidationService<Wallet, Long> implements CrudService<Wallet, Long> {
 
     private final Map<Long, Wallet> wallets = new HashMap<>();
-    private Long nextId = 4L;
+    private Long nextId = 3L;
     {
-        wallets.put(1L, new Wallet(1L, "Dollar", 2000.0));
-        wallets.put(2L, new Wallet(2L, "BTC", 0.0001));
-        wallets.put(3L, new Wallet(3L, "Real", 10000.0));
+        wallets.put(1L, new Wallet(1L, "Dollar", 2000.0, "dollar"));
+        wallets.put(2L, new Wallet(2L, "BTC", 0.0001, "btc"));
+        wallets.put(3L, new Wallet(3L, "Real", 10000.0, "real"));
     }
 
-    private Long getNextId() {
-        return nextId++;
+    public Long getNextId() {
+        return ++nextId;
     }
 
     @Override
@@ -41,7 +41,13 @@ public class WalletService extends AbstractValidationService<Wallet, Long> imple
 
     @Override
     public Wallet save(Wallet wallet) {
-        wallets.put(getNextId(), wallet);
+        if (wallet.getId() > 0){
+            wallets.put(wallet.getId(), wallet);
+        }else{
+            Long newId = getNextId();
+            wallet.setId(newId);
+            wallets.put(newId, wallet);
+        }
         return wallet;
     }
 

@@ -2,13 +2,33 @@ package com.artantech.dev_commons.project1.entity.vo;
 
 public class Wallet {
     private long id;
-    private String coinType;
+    private String name;
     private double balance;
+    private String currency;
 
-    public Wallet(long l, String coinType, double balance) {
+    public Wallet(){}
+
+    public Wallet(long l, String name, double balance, String currency) {
         this.id = l;
-        this.coinType = coinType;
+        this.name = name;
         this.balance = balance;
+        this.currency = currency;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public double getBalance() {
@@ -19,19 +39,11 @@ public class Wallet {
         this.balance = balance;
     }
 
-    public String getCoinType() {
-        return coinType;
+    public String getCurrency() {
+        return currency;
     }
 
-    public void setCoinType(String coinType) {
-        this.coinType = coinType;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
+    public void setCurrency(String currency) {
+        this.currency = currency;
     }
 }

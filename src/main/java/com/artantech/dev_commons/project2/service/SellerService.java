@@ -39,7 +39,13 @@ public class SellerService extends AbstractValidationService<Seller, Long> imple
 
     @Override
     public Seller save(Seller seller) {
-        sellers.put(getNextId(), seller);
+        if (seller.getId() > 0){
+            sellers.put(seller.getId(), seller);
+        }else{
+            Long newId = getNextId();
+            seller.setId(newId);
+            sellers.put(newId, seller);
+        }
         return seller;
     }
 

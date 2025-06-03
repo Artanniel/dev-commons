@@ -323,7 +323,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"name\": \"New Seller\",\n    \"email\": \"seller@example.com\",\n    \"rating\": 4.5\n}"
+              "raw": "{\n    \"name\": \"New Seller\",\n    \"commission\": \"20\",\n    \"sales\": 45\n}"
             },
             "url": {
               "raw": "http://localhost:8082/seller",
@@ -366,7 +366,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"name\": \"Updated Seller\",\n    \"email\": \"updated.seller@example.com\",\n    \"rating\": 5.0\n}"
+              "raw": "{\n    \"name\": \"New update Seller\",\n    \"commission\": \"20\",\n    \"sales\": 45\n}"
             },
             "url": {
               "raw": "http://localhost:8082/seller/1?params[param1]=value1&query[filter]=all",

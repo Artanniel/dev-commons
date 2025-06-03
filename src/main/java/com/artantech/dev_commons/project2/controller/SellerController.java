@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -24,7 +25,7 @@ public class SellerController {
     private final ObjectMapper objectMapper = new ObjectMapper();
 
     @GetMapping("")
-    public ResponseEntity<List<Seller>> getSellers(@RequestHeader("Authorization") String authHeader) {
+    public ResponseEntity<List<Seller>> getSellers(@RequestHeader("Authorization") String authHeader) throws Exception {
         final String serviceName = "getSellers";
         sellerService.validateAuthHeader(serviceName, authHeader);
         List<Seller> sellers = sellerService.findAll();
@@ -32,13 +33,18 @@ public class SellerController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Seller> getSellerById(@PathVariable Long id,
+    public ResponseEntity<Seller> getSellerById(
+        @PathVariable Long id,
         @RequestHeader("Authorization") String authHeader,
         @RequestParam(value = "params", required = false) Map<String, String> requestParams,
-        @RequestParam(value = "query", required = false) Map<String, String> requestQuery) {
+        @RequestParam(value = "query", required = false) Map<String, String> requestQuery) throws Exception {
         final String serviceName = "getSellerById";
-        sellerService.validateParams(serviceName, requestParams);
-        sellerService.validateQuery(serviceName, requestQuery);
+        if (requestParams != null) {
+            sellerService.validateParams(serviceName, requestParams);
+        }
+        if (requestQuery != null) {
+            sellerService.validateQuery(serviceName, requestQuery);
+        }
         sellerService.validateAuthHeader(serviceName, authHeader);
         Seller seller = sellerService.findById(id);
         return new ResponseEntity<>(seller, HttpStatus.OK);
@@ -53,6 +59,7 @@ public class SellerController {
             sellerService.validateAuthHeader(serviceName, authHeader);
             sellerService.validateRequestPayload(serviceName, requestBody);
             Seller seller = objectMapper.treeToValue(requestBody, Seller.class);
+            //Wallet wallet = getWalletFromJson(requestBody, walletService.getNextId());
             Seller createdSeller = sellerService.save(seller);
             return new ResponseEntity<>(createdSeller, HttpStatus.CREATED);
         } catch (Exception e) {
@@ -68,16 +75,18 @@ public class SellerController {
             @RequestBody(required = false) JsonNode requestBody,
             @RequestParam(value = "params", required = false) Map<String, String> requestParams,
             @RequestParam(value = "query", required = false) Map<String, String> requestQuery
-    ) {
+    ) throws Exception {
         final String serviceName = "updateSeller";
         sellerService.validateAuthHeader(serviceName, authHeader);
         sellerService.validateRequestPayload(serviceName, requestBody);
-        sellerService.validateParams(serviceName, requestParams);
-        sellerService.validateQuery(serviceName, requestQuery);
+        //sellerService.validateParams(serviceName, requestParams);
+        //sellerService.validateQuery(serviceName, requestQuery);
 
         try {
             Seller seller = objectMapper.treeToValue(requestBody, Seller.class);
+            seller.setId(id);
             Seller updatedSeller = sellerService.update(id, seller);
+
             return new ResponseEntity<>(updatedSeller, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>("Error processing request: " + e.getMessage(),

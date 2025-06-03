@@ -8,7 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 @RestController
 @RequestMapping("/wallets")
@@ -21,10 +24,11 @@ public class WalletController {
 
     @GetMapping("")
     public ResponseEntity<?> getAllWallets(
-            @RequestHeader("Authorization") String authHeader) {
+            @RequestHeader("Authorization") String authHeader) throws Exception {
         final String serviceName = "getAllWallets";
         walletService.validateAuthHeader(serviceName, authHeader);
-        JsonNode wallets = walletService.getResponsePayload(serviceName);
+        //JsonNode wallets = walletService.getResponsePayload(serviceName);
+        List<Wallet> wallets = walletService.findAll();
         return new ResponseEntity<>(wallets, HttpStatus.OK);
     }
 
@@ -33,7 +37,7 @@ public class WalletController {
             @PathVariable Long id,
             @RequestHeader("Authorization") String authHeader,
             @RequestParam(value = "params", required = false) Map<String, String> requestParams,
-            @RequestParam(value = "query", required = false) Map<String, String> requestQuery) {
+            @RequestParam(value = "query", required = false) Map<String, String> requestQuery) throws Exception {
         final String serviceName = "getWalletById";
         if (requestParams != null) {
             walletService.validateParams(serviceName, requestParams);
@@ -55,6 +59,7 @@ public class WalletController {
             walletService.validateAuthHeader(serviceName, authHeader);
             walletService.validateRequestPayload(serviceName, requestBody);
             Wallet wallet = objectMapper.treeToValue(requestBody, Wallet.class);
+            //Wallet wallet = getWalletFromJson(requestBody, walletService.getNextId());
             Wallet createdWallet = walletService.save(wallet);
             return new ResponseEntity<>(createdWallet, HttpStatus.CREATED);
         } catch (Exception e) {
@@ -63,22 +68,30 @@ public class WalletController {
         }
     }
 
+    private Wallet getWalletFromJson(JsonNode requestBody, long id) {
+        String name = requestBody.get("name").textValue();
+        double balance = requestBody.get("balance").doubleValue();
+        String currency = requestBody.get("currency").textValue();
+        return new Wallet(id, name , balance, currency);
+    }
+
     @PutMapping("/{id}")
     public ResponseEntity<?> updateWallet(
             @PathVariable Long id,
             @RequestHeader("Authorization") String authHeader,
             @RequestBody(required = false) JsonNode requestBody,
             @RequestParam(value = "params", required = false) Map<String, String> requestParams,
-            @RequestParam(value = "query", required = false) Map<String, String> requestQuery) {
+            @RequestParam(value = "query", required = false) Map<String, String> requestQuery) throws Exception {
 
         final String serviceName = "updateWallet";
         walletService.validateAuthHeader(serviceName, authHeader);
         walletService.validateRequestPayload(serviceName, requestBody);
-        walletService.validateParams(serviceName, requestParams);
-        walletService.validateQuery(serviceName, requestQuery);
+        //walletService.validateParams(serviceName, requestParams);
+        //walletService.validateQuery(serviceName, requestQuery);
 
         try {
-            Wallet wallet = objectMapper.treeToValue(requestBody, Wallet.class);
+            //Wallet wallet = objectMapper.treeToValue(requestBody, Wallet.class);
+            Wallet wallet = getWalletFromJson(requestBody, id);
             Wallet updatedWallet = walletService.update(id, wallet);
             return new ResponseEntity<>(updatedWallet, HttpStatus.OK);
         } catch (Exception e) {
@@ -96,8 +109,8 @@ public class WalletController {
         final String serviceName = "deleteWallet";
         try {
             walletService.validateAuthHeader(serviceName, authHeader);
-            walletService.validateParams(serviceName, requestParams);
-            walletService.validateQuery(serviceName, requestQuery);
+            //walletService.validateParams(serviceName, requestParams);
+            //walletService.validateQuery(serviceName, requestQuery);
             walletService.delete(id);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } catch (Exception e) {
